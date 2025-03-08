@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/utils/constants.dart';
+import 'package:portfolio/utils/screen_helper.dart';
 import 'package:portfolio/widgets/hover_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -18,7 +19,7 @@ class ContactPage extends StatelessWidget {
         child: Card(
           color: Colors.blueGrey[900],
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            padding: ScreenHelper.isMobile(context) ? const EdgeInsets.symmetric(vertical: 16) : const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

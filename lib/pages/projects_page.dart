@@ -24,7 +24,7 @@ class ProjectsPage extends StatelessWidget {
             child: Card(
               color: Colors.blueGrey[900],
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 32),
+                padding: contentPadding(context),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -34,7 +34,7 @@ class ProjectsPage extends StatelessWidget {
                     const SizedBox(height: 20,),
                     const Text('App for independently managing a business,', textAlign: TextAlign.center,),
                     const SizedBox(height: 20,),
-                    const Text('Built using Flutter and Firebase'),
+                    const Text('Built using Flutter and Firebase', textAlign: TextAlign.center,),
                     const SizedBox(height: 20,),
                     Wrap(
                       alignment: WrapAlignment.center,

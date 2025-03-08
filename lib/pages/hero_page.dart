@@ -33,9 +33,9 @@ class _HeroPageState extends State<HeroPage> {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Hi, I'm Ivan", style: TextStyle(color: textColor, fontSize: 48),),
+                    Text("Hi, I'm Ivan", style: TextStyle(color: textColor, fontSize: 44),),
                     SizedBox(width: 20,),
-                    Icon(Icons.waving_hand,size: 48,
+                    Icon(Icons.waving_hand,size: 44,
                     ),
                   ],
                 ),

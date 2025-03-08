@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/utils/constants.dart';
+import 'package:portfolio/utils/screen_helper.dart';
 
 class WorkPage extends StatelessWidget {
   const WorkPage({super.key});
@@ -8,6 +9,29 @@ class WorkPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final ExpansionTileController monoTileController = ExpansionTileController();
     final ExpansionTileController moxTileController = ExpansionTileController();
+
+    Widget buildMonoChips() {
+      return const Wrap(
+        spacing: 10,
+        children: [
+          Chip(label: Text('C#', style: TextStyle(color: Colors.purple)), side: BorderSide(color: Colors.purple),),
+          Chip(label: Text('Entity Framework', style: TextStyle(color: Colors.blue),), side: BorderSide(color: Colors.blue),),
+          Chip(label: Text('Angular', style: TextStyle(color: Colors.red),), side: BorderSide(color: Colors.red),),
+          Chip(label: Text('PostgreSQL', style: TextStyle(color: Colors.blueAccent),), side: BorderSide(color: Colors.blueAccent),),
+        ],
+      );
+    }
+
+    Widget buildMoxChips() {
+      return const Wrap(
+        spacing: 10,
+        children: [
+          Chip(label: Text('Dart', style: TextStyle(color: Colors.blue),), side: BorderSide(color: Colors.blue),),
+          Chip(label: Text('Flutter', style: TextStyle(color: Colors.indigoAccent)), side: BorderSide(color: Colors.indigoAccent),),
+          Chip(label: Text('Firebase', style: TextStyle(color: Colors.redAccent),), side: BorderSide(color: Colors.redAccent),),
+        ],
+      );
+    }
 
     return Container(
       padding: contentPadding(context),
@@ -22,32 +46,21 @@ class WorkPage extends StatelessWidget {
               tilePadding: const EdgeInsets.all(20),
               collapsedShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              title: const Wrap(
-                runSpacing: 10,
+              title: ScreenHelper.isWorkExperience(context) ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Mono Software', style: TextStyle(fontWeight: FontWeight.bold),),
-                      Text('November 2018 - May 2019', style: TextStyle(fontSize: 12),),
-                    ],
-                  ),
-                  // Spacer(),
-                  Expanded(
-                    child: Wrap(
-                      alignment: WrapAlignment.end,
-                      runSpacing: 10,
-                      spacing: 10,
-                      children: [
-                        Chip(label: Text('C#', style: TextStyle(color: Colors.purple)), side: BorderSide(color: Colors.purple),),
-                        Chip(label: Text('Entity Framework', style: TextStyle(color: Colors.blue),), side: BorderSide(color: Colors.blue),),
-                        Chip(label: Text('Angular', style: TextStyle(color: Colors.red),), side: BorderSide(color: Colors.red),),
-                        Chip(label: Text('PostgreSQL', style: TextStyle(color: Colors.blueAccent),), side: BorderSide(color: Colors.blueAccent),),
-                      ],
-                    ),
-                  )
+                  const Text('Mono Software', style: TextStyle(fontWeight: FontWeight.bold),),
+                  const Text('November 2018 - May 2019', style: TextStyle(fontSize: 12),),              
+                  buildMonoChips()
+                ],
+              ) : const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Mono Software', style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text('November 2018 - May 2019', style: TextStyle(fontSize: 12),),
                 ],
               ),
+              trailing: ScreenHelper.isWorkExperience(context) ? null : buildMonoChips(),
               controlAffinity: ListTileControlAffinity.leading,
               expandedAlignment: Alignment.centerLeft,
               expandedCrossAxisAlignment: CrossAxisAlignment.start,
@@ -80,31 +93,21 @@ class WorkPage extends StatelessWidget {
               tilePadding: const EdgeInsets.all(20),
               collapsedShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              title: const Wrap(
-                runSpacing: 10,
+              title: ScreenHelper.isWorkExperience(context) ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Mox', style: TextStyle(fontWeight: FontWeight.bold),),
-                      Text('August 2021 - Today', style: TextStyle(fontSize: 12),),
-                    ],
-                  ),
-                  Spacer(),
-                  Expanded(
-                    child: Wrap(
-                      alignment: WrapAlignment.end,
-                      spacing: 10,
-                      runSpacing: 10,
-                      children: [
-                        Chip(label: Text('Dart', style: TextStyle(color: Colors.blue),), side: BorderSide(color: Colors.blue),),
-                        Chip(label: Text('Flutter', style: TextStyle(color: Colors.indigoAccent)), side: BorderSide(color: Colors.indigoAccent),),
-                        Chip(label: Text('Firebase', style: TextStyle(color: Colors.redAccent),), side: BorderSide(color: Colors.redAccent),),
-                      ],
-                    ),
-                  )
+                  const Text('Mox', style: TextStyle(fontWeight: FontWeight.bold),),
+                  const Text('August 2021 - Today', style: TextStyle(fontSize: 12),),
+                  buildMoxChips()
+                ],
+              ) : const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Mox', style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text('August 2021 - Today', style: TextStyle(fontSize: 12),),
                 ],
               ),
+              trailing: ScreenHelper.isWorkExperience(context) ? null : buildMoxChips(),
               controlAffinity: ListTileControlAffinity.leading,
               expandedAlignment: Alignment.centerLeft,
               expandedCrossAxisAlignment: CrossAxisAlignment.start,

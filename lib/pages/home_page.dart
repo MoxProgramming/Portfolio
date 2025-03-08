@@ -5,6 +5,7 @@ import 'package:portfolio/pages/projects_page.dart';
 import 'package:portfolio/pages/skills_page.dart';
 import 'package:portfolio/pages/work_page.dart';
 import 'package:portfolio/utils/constants.dart';
+import 'package:portfolio/utils/screen_helper.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -89,7 +90,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
+      appBar: ScreenHelper.isMobile(context) ? null : AppBar(
         backgroundColor: Colors.transparent,
         actions: [
           _buildAppBarButton(0, 'Home', heroKey),
@@ -99,6 +100,20 @@ class _HomePageState extends State<HomePage> {
           _buildAppBarButton(4, 'Contact', contactKey),
         ],
       ),
+      bottomNavigationBar: ScreenHelper.isMobile(context) ? BottomNavigationBar(
+        currentIndex: _currentSection,
+        backgroundColor: primaryBackgroundColor,
+        selectedItemColor: highlightColor,
+        unselectedItemColor: Colors.grey,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Skills'),
+          BottomNavigationBarItem(icon: Icon(Icons.work), label: 'Work Experience'),
+          BottomNavigationBarItem(icon: Icon(Icons.code), label: 'Projects'),
+          BottomNavigationBarItem(icon: Icon(Icons.contact_page), label: 'Contact'),
+        ],
+        onTap: (index) => scrollToSection(sectionKeys[index]),
+      ) : null,
       body: Stack(
         children: [
           SingleChildScrollView(
