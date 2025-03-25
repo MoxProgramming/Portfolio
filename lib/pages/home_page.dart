@@ -90,6 +90,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+      extendBody: true,
       appBar: ScreenHelper.isMobile(context) ? null : AppBar(
         backgroundColor: Colors.transparent,
         actions: [
@@ -102,9 +103,9 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: ScreenHelper.isMobile(context) ? BottomNavigationBar(
         currentIndex: _currentSection,
-        backgroundColor: primaryBackgroundColor,
+        backgroundColor: Colors.transparent,
         selectedItemColor: highlightColor,
-        unselectedItemColor: Colors.grey,
+        unselectedItemColor: Colors.white,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Skills'),

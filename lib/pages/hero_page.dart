@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/utils/constants.dart';
+import 'package:portfolio/utils/web_only.dart';
 import 'package:portfolio/widgets/big_button.dart';
 import 'package:portfolio/widgets/color_wave_text.dart';
 import 'package:portfolio/widgets/hover_button.dart';
@@ -129,7 +130,9 @@ class _HeroPageState extends State<HeroPage> {
                       child: BigButton(
                         text: 'Download Resume',
                         icon: const Icon(Icons.download, color: Colors.white,),
-                        onPressed: () {},
+                        onPressed: () {
+                          downloadPdfFromAsset('assets/MoxCV.pdf');
+                        },
                       ),
                     )
                 ]),

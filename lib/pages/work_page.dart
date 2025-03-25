@@ -122,7 +122,7 @@ class WorkPage extends StatelessWidget {
                 (value == true && monoTileController.isExpanded) ? monoTileController.collapse() : null;
               },
               children: const [
-                Text('Software Engineer'),
+                Text('Flutter Developer'),
                 Text('Building cross platform applications for clients using Dart, Flutter and a Firebase NoSQL database.'),
               ],
             )
